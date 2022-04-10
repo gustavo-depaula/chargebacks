@@ -10,7 +10,7 @@ def index(request):
 
 
 def new(request):
-    make_random_string = lambda: binascii.b2a_hex(os.urandom(15))
+    make_random_string = lambda: str(binascii.b2a_hex(os.urandom(15)))
     make_new_request(
         {"user_id": make_random_string(), "purchase_id": make_random_string()}
     )
