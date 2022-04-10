@@ -17,3 +17,20 @@ def test_event_emitter():
     emitter.off("sample_type", callback)
     emitter.emit("sample_type", 2306)
     callback.assert_not_called()
+
+
+def test_event_emitter_wildcard():
+    callback = Mock()
+    emitter = make_event_emitter()
+
+    emitter.emit("sample_type", {})
+    callback.assert_not_called()
+
+    emitter.on("*", callback)
+    emitter.emit("sample_type", 2306)
+    callback.assert_called_once_with("sample_type", 2306)
+    callback.reset_mock()
+
+    emitter.off("*", callback)
+    emitter.emit("sample_type", 2306)
+    callback.assert_not_called()

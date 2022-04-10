@@ -48,6 +48,7 @@ services:
       - "8081:8080"
 
   chargebacks:
+    restart: always
     build: ./chargebacks_web
     image: chargebacks_web
     volumes:
