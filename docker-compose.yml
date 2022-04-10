@@ -39,10 +39,12 @@ services:
       - "8081:8080"
 
   chargebacks:
+    build: ./chargebacks_web
     image: chargebacks_web
-    command: tail -F anything
     volumes:
       - "./chargebacks_web:/home/chargebacks:rw"
+    depends_on:
+      - db
 
 volumes:
   zookeeper_data:
