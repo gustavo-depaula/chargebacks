@@ -7,6 +7,9 @@ ADD pyproject.toml .
 ADD poetry.lock .
 
 RUN poetry install
-CMD poetry run python manage.py runserver
+ENV PYTHONUNBUFFERED 1
+
+CMD poetry run python manage.py migrate && poetry run python manage.py runserver 0.0.0.0:8000
+
 # build with
 # docker build -t chargebacks_web .

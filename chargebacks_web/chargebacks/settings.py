@@ -77,8 +77,8 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "chargebacks_db",
-        "USER": "admin",
-        "PASSWORD": "admin",
+        "USER": "root",
+        "PASSWORD": "root",
         "HOST": "db",
         "PORT": "5432",
     }
