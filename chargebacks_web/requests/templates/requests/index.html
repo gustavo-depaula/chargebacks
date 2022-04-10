@@ -1,0 +1,18 @@
+<div>
+  <h1>New Chargeback Request</h1>
+  <form action="{% url 'requests:new' %}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Make new Chargeback Request!">
+  </form>
+
+{% if requests %}
+    <ul>
+    {% for request in requests %}
+        <li>User ID: {{ request.user_id }} | Purchase ID: {{ request.purchase_id }} | State: {{ request.state }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No Chargebacks Requests are available.</p>
+{% endif %}
+
+</div>
